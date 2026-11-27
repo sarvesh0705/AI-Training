@@ -1,0 +1,115 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+a = Node('A')
+b = Node('B')
+c = Node('C')
+d = Node('D')
+
+a.next = b
+b.next = c
+c.next = d
+
+temp = a
+while temp:
+    print(temp.data, end=" -> ")
+    temp = temp.next
+print("None")
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+head = None
+tail = None
+
+for value in [5, 6, 10]:
+    newnode = Node(value)
+
+    if head is None:
+        head = newnode
+        tail = newnode
+    else:
+        tail.next = newnode
+        tail = newnode
+
+temp = head
+
+while temp is not None:
+    print(temp.data, end=" -> ")
+    temp = temp.next
+
+print("None")
+
+stack = []
+top = -1
+
+def push(data):
+    global top
+
+    stack.append(data)
+    top += 1
+
+    print(data, "inserted")
+
+
+def pop():
+    global top
+
+    if top == -1:
+        print("Stack is Empty")
+    else:
+        print("Deleted element:", stack[top])
+        stack.pop()
+        top -= 1
+
+def peek():
+    if top == -1:
+        print("Stack is Empty")
+    else:
+        print("Top element:", stack[top])
+
+push(10)
+push(20)
+push(30)
+
+print("Stack:", stack)
+
+peek()
+
+pop()
+
+print("Stack after pop:", stack)
+
+peek()
+
+queue = []
+front = -1
+rear = -1
+
+def enqueue(item):
+    global front, rear
+    if front == -1:
+        front = 0
+    queue.append(item)
+    rear += 1
+def dequeue():
+    global front, rear
+    if front == -1 or front > rear:
+        print("Queue Underflow")
+        return
+    item = queue[front]
+    front += 1
+    if front > rear:
+        front = rear = -1
+    return item
+
+enqueue(10)
+enqueue(20)
+enqueue(30)
+
+
+dequeue()
