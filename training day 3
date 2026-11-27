@@ -111,5 +111,100 @@ enqueue(10)
 enqueue(20)
 enqueue(30)
 
-
 dequeue()
+
+
+"""
+LINKED LIST, STACK, AND QUEUE IMPLEMENTATIONS IN PYTHON
+
+1. Singly Linked List: node creation, list creation, and traversal
+2. Stack implementation using a Python list
+3. Queue implementation using a Python list
+
+Run this file to see sample output.
+"""
+
+
+# ============================================================
+# 1. SINGLY LINKED LIST - CREATION AND TRAVERSAL
+# ============================================================
+
+class Node:
+    """Represents one node in a singly linked list."""
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def create(self, values):
+        """Create a linked list from a collection of values."""
+        for value in values:
+            new_node = Node(value)
+
+            if self.head is None:
+                self.head = new_node
+            else:
+                current = self.head
+
+                # Move to the last node
+                while current.next is not None:
+                    current = current.next
+
+                # Attach the new node at the end
+                current.next = new_node
+
+    def traverse(self):
+        """Visit and print every node from head to end."""
+        current = self.head
+
+        if current is None:
+            print("Linked list is empty")
+            return
+
+        while current is not None:
+            print(current.data, end=" -> ")
+            current = current.next
+
+        print("None")
+
+
+# ============================================================
+# 2. STACK IMPLEMENTATION USING A PYTHON LIST
+# ============================================================
+
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, value):
+        """Insert an element at the top of the stack."""
+        self.items.append(value)
+        print(value, "pushed into stack")
+
+    def pop(self):
+        """Remove and return the top element."""
+        if self.is_empty():
+            print("Stack Underflow: stack is empty")
+            return None
+        return self.items.pop()
+
+    def peek(self):
+        """Return the top element without removing it."""
+        if self.is_empty():
+            print("Stack is empty")
+            return None
+        return self.items[-1]
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def display(self):
+        if self.is_empty():
+            print("Stack is empty")
+        else:
+            print("Stack (bottom -> top):", self.items)
